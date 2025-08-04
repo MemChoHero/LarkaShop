@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Entities\RoleEntity;
 use App\Entities\UserEntity;
 use App\Exceptions\InvalidCredentialsException;
 use App\Repositories\Interfaces\IUserRepository;
@@ -14,9 +15,9 @@ readonly class AuthService
 
     }
 
-    public function register(UserEntity $userEntity): UserEntity
+    public function register(UserEntity $userEntity, RoleEntity $roleEntity): UserEntity
     {
-        return $this->userRepository->create($userEntity);
+        return $this->userRepository->create($userEntity, $roleEntity);
     }
 
     /**

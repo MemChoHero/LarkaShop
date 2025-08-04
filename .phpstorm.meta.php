@@ -13,6 +13,7 @@ namespace PHPSTORM_META {
     */
     override(new \Illuminate\Contracts\Container\Container, map([
         '' => '@',
+            'App\Repositories\Interfaces\IUserRepository' => \App\Repositories\UserRepository::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -77,6 +78,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Container\Container::makeWith(0), map([
         '' => '@',
+            'App\Repositories\Interfaces\IUserRepository' => \App\Repositories\UserRepository::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -141,6 +143,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::get(0), map([
         '' => '@',
+            'App\Repositories\Interfaces\IUserRepository' => \App\Repositories\UserRepository::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -205,6 +208,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
+            'App\Repositories\Interfaces\IUserRepository' => \App\Repositories\UserRepository::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -269,6 +273,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
+            'App\Repositories\Interfaces\IUserRepository' => \App\Repositories\UserRepository::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -333,6 +338,7 @@ namespace PHPSTORM_META {
         ]));
     override(\App::get(0), map([
         '' => '@',
+            'App\Repositories\Interfaces\IUserRepository' => \App\Repositories\UserRepository::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -397,6 +403,7 @@ namespace PHPSTORM_META {
         ]));
     override(\App::make(0), map([
         '' => '@',
+            'App\Repositories\Interfaces\IUserRepository' => \App\Repositories\UserRepository::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -461,6 +468,7 @@ namespace PHPSTORM_META {
         ]));
     override(\App::makeWith(0), map([
         '' => '@',
+            'App\Repositories\Interfaces\IUserRepository' => \App\Repositories\UserRepository::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -525,6 +533,7 @@ namespace PHPSTORM_META {
         ]));
     override(\app(0), map([
         '' => '@',
+            'App\Repositories\Interfaces\IUserRepository' => \App\Repositories\UserRepository::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -589,6 +598,7 @@ namespace PHPSTORM_META {
         ]));
     override(\resolve(0), map([
         '' => '@',
+            'App\Repositories\Interfaces\IUserRepository' => \App\Repositories\UserRepository::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -653,6 +663,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Psr\Container\ContainerInterface::get(0), map([
         '' => '@',
+            'App\Repositories\Interfaces\IUserRepository' => \App\Repositories\UserRepository::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -2091,16 +2102,17 @@ namespace PHPSTORM_META {
 'ide-helper.post_migrate','tinker.commands','tinker.alias','tinker.dont_alias',);
         registerArgumentsSet('middleware', 
 'web','api',);
-        registerArgumentsSet('routes', 'register','storage.local',);
+        registerArgumentsSet('routes', 'register','register','root',
+'login','login','storage.local',);
         registerArgumentsSet('views', 
-'auth.register','welcome','laravel-exceptions-renderer::components.card','laravel-exceptions-renderer::components.context','laravel-exceptions-renderer::components.editor',
-'laravel-exceptions-renderer::components.header','laravel-exceptions-renderer::components.icons.chevron-down','laravel-exceptions-renderer::components.icons.chevron-up','laravel-exceptions-renderer::components.icons.computer-desktop','laravel-exceptions-renderer::components.icons.moon',
-'laravel-exceptions-renderer::components.icons.sun','laravel-exceptions-renderer::components.layout','laravel-exceptions-renderer::components.navigation','laravel-exceptions-renderer::components.theme-switcher','laravel-exceptions-renderer::components.trace',
-'laravel-exceptions-renderer::components.trace-and-editor','laravel-exceptions-renderer::show','laravel-exceptions::401','laravel-exceptions::402','laravel-exceptions::403',
-'laravel-exceptions::404','laravel-exceptions::419','laravel-exceptions::429','laravel-exceptions::500','laravel-exceptions::503',
-'laravel-exceptions::layout','laravel-exceptions::minimal','notifications::email','pagination::bootstrap-4','pagination::bootstrap-5',
-'pagination::default','pagination::semantic-ui','pagination::simple-bootstrap-4','pagination::simple-bootstrap-5','pagination::simple-default',
-'pagination::simple-tailwind','pagination::tailwind',);
+'auth.login','auth.register','common.root','components.navbar','welcome',
+'laravel-exceptions-renderer::components.card','laravel-exceptions-renderer::components.context','laravel-exceptions-renderer::components.editor','laravel-exceptions-renderer::components.header','laravel-exceptions-renderer::components.icons.chevron-down',
+'laravel-exceptions-renderer::components.icons.chevron-up','laravel-exceptions-renderer::components.icons.computer-desktop','laravel-exceptions-renderer::components.icons.moon','laravel-exceptions-renderer::components.icons.sun','laravel-exceptions-renderer::components.layout',
+'laravel-exceptions-renderer::components.navigation','laravel-exceptions-renderer::components.theme-switcher','laravel-exceptions-renderer::components.trace','laravel-exceptions-renderer::components.trace-and-editor','laravel-exceptions-renderer::show',
+'laravel-exceptions::401','laravel-exceptions::402','laravel-exceptions::403','laravel-exceptions::404','laravel-exceptions::419',
+'laravel-exceptions::429','laravel-exceptions::500','laravel-exceptions::503','laravel-exceptions::layout','laravel-exceptions::minimal',
+'notifications::email','pagination::bootstrap-4','pagination::bootstrap-5','pagination::default','pagination::semantic-ui',
+'pagination::simple-bootstrap-4','pagination::simple-bootstrap-5','pagination::simple-default','pagination::simple-tailwind','pagination::tailwind',);
         registerArgumentsSet('translations', 
 'C:.Users.satsugai.Documents.LarkaShop.vendor.laravel.framework.src.Illuminate.Translation.lang.en.auth.failed','C:.Users.satsugai.Documents.LarkaShop.vendor.laravel.framework.src.Illuminate.Translation.lang.en.auth.password','C:.Users.satsugai.Documents.LarkaShop.vendor.laravel.framework.src.Illuminate.Translation.lang.en.auth.throttle','C:.Users.satsugai.Documents.LarkaShop.vendor.laravel.framework.src.Illuminate.Translation.lang.en.pagination.previous','C:.Users.satsugai.Documents.LarkaShop.vendor.laravel.framework.src.Illuminate.Translation.lang.en.pagination.next',
 'C:.Users.satsugai.Documents.LarkaShop.vendor.laravel.framework.src.Illuminate.Translation.lang.en.passwords.reset','C:.Users.satsugai.Documents.LarkaShop.vendor.laravel.framework.src.Illuminate.Translation.lang.en.passwords.sent','C:.Users.satsugai.Documents.LarkaShop.vendor.laravel.framework.src.Illuminate.Translation.lang.en.passwords.throttled','C:.Users.satsugai.Documents.LarkaShop.vendor.laravel.framework.src.Illuminate.Translation.lang.en.passwords.token','C:.Users.satsugai.Documents.LarkaShop.vendor.laravel.framework.src.Illuminate.Translation.lang.en.passwords.user',
