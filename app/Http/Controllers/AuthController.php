@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\RoleEntity;
 use App\Entities\UserEntity;
+use App\Enums\RoleEnum;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Services\AuthService;
@@ -25,9 +27,21 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request): RedirectResponse
     {
-        $result = $this->authService->register(UserEntity::fromRequest($request));
+        $result = $this->authService->register(
+            UserEntity::fromRequest($request),
+            RoleEntity::fromEnum(RoleEnum::USER)
+        );
 
-        return redirect()->route('root')->with(['email' => $result->getEmail()]);
+        $validated = $request->validated();
+
+        if(Auth::attempt($validated)) {
+            $request->session()->regenerate();
+            return redirect()->route('root')->with(['email' => $validated['email']]);
+        }
+
+        return back()->withErrors([
+            'auth' => 'internal server error',
+        ]);
     }
 
     public function getLoginForm(Request $request): View
