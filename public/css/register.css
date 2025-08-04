@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto auto;
+    flex-flow: column;
+}
+
+form {
+    display: flex;
+    flex-flow: column;
+}
+
+input {
+    padding: 15px 30px;
+    border: 1px solid darkcyan;
+    border-radius: 5px;
+    margin-top: 5px;
+    outline: none;
+}
+
+button {
+    padding: 5px 15px;
+    border: 1px solid darkcyan;
+    background: transparent;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.invalid {
+    border: 1px solid indianred;
+}

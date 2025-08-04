@@ -1,0 +1,15 @@
+nav {
+    display: flex;
+    flex-flow: row;
+    background-color: #0a0a0a;
+    font-family: -apple-system, sans-serif;
+}
+
+p {
+    margin-left: 10px;
+    color: aliceblue;
+}
+
+body {
+    margin: 0;
+}
