@@ -73,6 +73,12 @@ return [
             'replace_placeholders' => true,
         ],
 
+        'slow_queries' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/slow_queries.log'),
+            'level' => 'warning',
+        ],
+
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
@@ -127,6 +133,12 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        'telegram' => [
+            'driver' => 'custom',
+            'via' => \App\Logging\Telegram\TelegramLoggerFactory::class,
+            'chat_id' => env('TELEGRAM_LOG_CHAT_ID'),
+            'token' => env('TELEGRAM_BOT_TOKEN'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
     ],
-
 ];
