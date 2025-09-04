@@ -3,6 +3,7 @@
 namespace App\Logging\Telegram;
 
 use App\Services\Telegram\TelegramBotApi;
+use Illuminate\Http\Client\ConnectionException;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
 use Monolog\LogRecord;
@@ -22,6 +23,9 @@ class TelegramLoggerHandler extends AbstractProcessingHandler
         $this->chatId = $config['chat_id'];
     }
 
+    /**
+     * @throws ConnectionException
+     */
     protected function write(LogRecord $record): void
     {
         TelegramBotApi::sendMessage($this->token, $this->chatId, $record['formatted']);

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Models\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -28,12 +29,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereThumbnail($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereUpdatedAt($value)
+ * @property-read \App\Models\Brand $brand
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $category
+ * @property-read int|null $category_count
  * @mixin \Eloquent
  */
 class Product extends Model
 {
     /** @use HasFactory<\Database\Factories\ProductFactory> */
     use HasFactory;
+    use HasSlug;
 
     protected $fillable = [
         'title',
@@ -42,15 +47,6 @@ class Product extends Model
         'brand_id',
         'slug'
     ];
-
-    protected static function boot(): void
-    {
-        parent::boot();
-
-        static::creating(function (Product $product) {
-            $product->slug = $product->slug ?? str($product->title)->slug();
-        });
-    }
 
     public function brand(): BelongsTo
     {

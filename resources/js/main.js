@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    const images = import.meta.glob('../images/**/*')
 	/**
 	 * Mobile menu
 	 */
