@@ -29,16 +29,16 @@ class AppServiceProvider extends ServiceProvider
         Model::preventSilentlyDiscardingAttributes(!app()->isProduction());
 
         DB::whenQueryingForLongerThan(
-            CarbonInterval::seconds(self::OPERATION_TIMEOUT), 
+            CarbonInterval::seconds(self::OPERATION_TIMEOUT),
             function (Connection $connection) {
-            logger()
-                ->channel('telegram')
-                ->debug('query too long ' . $connection->query()->toSql());
-        });
+                logger()
+                    ->channel('telegram')
+                    ->debug('query too long ' . $connection->query()->toSql());
+            });
 
         $kernel = app(Kernel::class);
         $kernel->whenRequestLifecycleIsLongerThan(
-            CarbonInterval::seconds(self::OPERATION_TIMEOUT), 
+            CarbonInterval::seconds(self::OPERATION_TIMEOUT),
             function () {
             logger()
                 ->channel('telegram')

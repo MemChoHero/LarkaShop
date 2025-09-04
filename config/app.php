@@ -2,6 +2,7 @@
 
 return [
 
+    'Vite' => \Illuminate\Support\Facades\Vite::class,
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -17,7 +18,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Environment
+    | Application Environment+//
     |--------------------------------------------------------------------------
     |
     | This value determines the "environment" your application is currently
