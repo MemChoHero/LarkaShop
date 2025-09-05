@@ -3,15 +3,11 @@
 namespace App\Listeners;
 
 use App\Notifications\PasswordResetNotification;
-use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Events\PasswordReset;
 
-
-class SendEmailNewUserListener
+class PasswordResetListener
 {
-    /**
-     * Handle the event.
-     */
-    public function handle(Registered $event): void
+    public function handle(PasswordReset $event): void
     {
         $event->user->notify(new PasswordResetNotification($event->user->name));
     }
