@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ForgotPasswordRequest;
+use App\Http\Requests\ResetPasswordRequest;
 use App\Http\Requests\SignInFormRequest;
 use App\Http\Requests\SignUpRequest;
 use App\Models\User;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class AuthController extends Controller
@@ -15,7 +22,7 @@ class AuthController extends Controller
     {
         if (!auth()->attempt($request->validated())) {
             return back()->withErrors([
-                'email' => 'The provided credentials do not match our records.',
+                'email' => 'Неверное имя пользователя или пароль.',
             ])->onlyInput('email');
         }
 
@@ -39,6 +46,36 @@ class AuthController extends Controller
         return redirect()->intended(route('home'));
     }
 
+    public function forgotPassword(ForgotPasswordRequest $request): RedirectResponse
+    {
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+        return $status === Password::RESET_LINK_SENT
+            ? back()->with(['message' => __($status)])
+            : back()->withErrors(['email' => __($status)]);
+    }
+
+    public function resetPassword(ResetPasswordRequest $request): RedirectResponse
+    {
+        $status = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function (User $user, string $password) {
+                $user->forceFill([
+                    'password' => Hash::make($password),
+                ])->setRememberToken(Str::random(60));
+                $user->save();
+
+                event(new PasswordReset($user));
+            }
+        );
+
+        return $status === Password::PasswordReset
+            ? redirect()->route('login')->with('status', __($status))
+            : back()->withErrors(['email' => [__($status)]]);
+    }
+
     public function logout(): RedirectResponse
     {
         auth()->logout();
@@ -58,13 +95,13 @@ class AuthController extends Controller
         return view('auth.signup');
     }
 
-    public function forgetPassword(): View
+    public function forgot(): View
     {
         return view('auth.forgot_password');
     }
 
-    public function resetPassword(): View
+    public function reset(string $token): View
     {
-        return view('auth.reset_password');
+        return view('auth.reset_password', ['token' => $token]);
     }
 }
